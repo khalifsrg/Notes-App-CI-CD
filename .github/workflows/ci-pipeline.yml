@@ -27,7 +27,7 @@ jobs:
       - name: Run linter
         run: npm run test-lint
         working-directory: ./src
-        
+
   unit-tests:
     needs: lint
     runs-on: ubuntu-latest
@@ -49,3 +49,15 @@ jobs:
       with:
         name: test-report
         path: ./src/reports/report.xml
+  
+  deploy:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - uses: actions/checkout@v2
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.GH_PAT }}
+        publish_dir: ./coverage
