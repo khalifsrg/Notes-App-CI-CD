@@ -61,6 +61,7 @@ If the pipeline fails, check the logs in the "Actions" tab for details on the er
 - **Dependency Errors:** Update package versions in package.json if needed.
 - **Linting Issues:** Follow the linting rules and fix any issues reported.
 - **Test Failures:** Review test logs to identify and fix any issues.
+- **Issues with Deployment:** Verify that the GH_PAT secret is properly set up and has the necessary permissions.
 
 ### Branching Strategy (GitFlow)
 
