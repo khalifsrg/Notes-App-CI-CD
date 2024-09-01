@@ -3,24 +3,6 @@
 - Full Name/Names: **Khalif Pirtondi Siregar** / **Azfar Syed**
 - Student ID/IDs: **s3895242** / **s4014872**
 
-### Guidance (remove this section before final submission)
-
-1. Refer for assignment specification `Marking Guide` for details of what should appear in this README.
-
-2. If you do not see an `Actions` tab in your GitHub, email matthew.cullen@rmit.edu.au with URL to your repository, so that it can be enabled.
-
-3. Implement your CI pipeline in the directory `.github/workflows`.
-
-4. Refer to [src/README.md](/src/README.md) for important details on building and testing the application.
-
-5. Commit images to the `img` directory and add them like 
-    ```html
-    <img src="/img/md.png" style="height: 70px;"/>
-    ```
-    <img src="/img/md.png" style="height: 70px;"/>
-
-6. Only edit THIS README.md - not the src/README.md
-
 ## Description
 
 The Notes Application's Continuous Integration (CI) pipeline configuration is stored in this repository. The pipeline's automated linting, testing, and deployment procedures ensure code quality and maintains stability across various branches.
