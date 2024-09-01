@@ -84,23 +84,22 @@ jobs:
       run: npx playwright install
       working-directory: ./src
 
+    # Install missing libraries
     - name: Install missing libraries
       run: |
         sudo apt-get update
         sudo apt-get install -y \
-          libwoff2-dev \
-          libvpx-dev \
-          libevent-dev \
-          libopus-dev \
-          libgstreamer1.0-dev \
-          libgstreamer-plugins-base1.0-dev \
-          libharfbuzz-dev \
-          libhyphen-dev \
+          libwoff1 \
+          libvpx5 \
+          libevent-2.1-7 \
+          libopus0 \
+          libgstreamer1.0-0 \
+          libgstreamer-plugins-base1.0-0 \
+          libharfbuzz0b \
+          libhyphen0 \
           libflite1 \
           libgles2-mesa-dev \
-          libx264-dev \
-          libmanette-0.2-dev \
-          libflite-dev
+          libx264-dev
     
     # Add this step to start your application
     - name: Start application
