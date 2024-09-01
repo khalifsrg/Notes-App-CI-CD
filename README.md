@@ -23,33 +23,36 @@
 
 ## Description
 
-The following repository integrates a Continuous Integration (CI) pipeline via Github Actions to automate the build and testing processes for the Notes Application.
+The Notes Application's Continuous Integration (CI) pipeline configuration is stored in this repository. The pipeline's automated linting, testing, and deployment procedures ensure code quality and maintains stability across various branches.
 
 ### Running the Pipeline
 
-The CI pipeline is automatically triggered by GitHub Actions under the following conditions:
+The CI pipeline is automatically triggered when either of the following occurs:
+1. Push Events: The pipeline runs on any push to any branch within the repository.
+2. Pull Request Events: The pipeline runs on any pull request targeting any branch within the repository.
 
-- A new commit is pushed to any branch.
-- A pull request is opened or updated.
+The pipeline is automatically initiated by the events mentioned above. Developers do not need to manually trigger the pipeline; it will run as part of the standard development workflow. However, manual triggers can be initiated by pushing changes to any branch or by updating a pull request.
+
+### Manual Trigger (Optional)
+While the pipeline is automatically triggered by the conditions mentioned above, you can also manually trigger it:
+1. Navigate to the "Actions" tab in the GitHub Repository.
+2. Select the workflow you wish to run.
+3. Click the "Run workflow" button to start the pipeline manually.
 
 ### Expected Output
 
-Once the pipeline is activated, Github Actions will execute the following steps:
-1. **Checkout Code:** Using the latest version, the code will be checked out from the repository.
-2. **Install Dependencies:** The necessary Node.js packages will be installed.
-3. **Lint Code:** The code is checked for quality and style issues.
-4. **Run Tests:** Execution of unit and integration tests to ensure code functionality and correctness.
-5. **Build Application:** If applicable, the application will be built (e.g. if a build step is defined).
+Upon triggering, the pipeline executes a series of jobs that ensure the codebase maintains high quality standards. 
+
+- Linting Results: Identification and reporting of any code style or syntax issues.
+- Unit Test Results: Pass or fail status of the unit tests along with logs.
+- Code Coverage Reports: Information indicating the percentage of code covered by tests.
+- Artifacts: Generated test reports available for download.
+- Deployment Status: Confirmation of successful deployment to GitHub Pages when applicable.
 
 ### Viewing Pipeline Results
 1. Navigate to the "Actions" tab in the GitHub Repository.
 2. Select the workflow run. This will enable viewing detailed logs and results of each step.
 
-### Manual Trigger (Optional)
-While the pipeline is automatically triggered by the conditions mentioned above, you can also manually trigger it:
-1. Navigate to the "Actions" tab in the GitHub Repository.
-2. Seclect the workflow you wish to run.
-3. Click the "Run workflow" button to start the pipeline manually.
 
 ## Troubleshooting 
 
@@ -58,9 +61,16 @@ If the pipeline fails, check the logs in the "Actions" tab for details on the er
 - **Dependency Errors:** Update package versions in package.json if needed.
 - **Linting Issues:** Follow the linting rules and fix any issues reported.
 - **Test Failures:** Review test logs to identify and fix any issues.
+- **Issues with Deployment:** Verify that the GH_PAT secret is properly set up and has the necessary permissions.
+
+### Branching Strategy (GitFlow)
+
+- Main Branch ("main"): The main branch that has code that is suitable for production. Merges into main are only modifications that have successfully completed all CI tests. Artifacts and deployments are limited to this branch.
+- Develop Branch ("develop"): Functions as a feature construction integration branch, prior to merging into main.
+- Feature Branches ("feature/*"): Used to create specific features or fixes. Before these branches are pulled into develop or main via pull requests, the continuous integration pipeline runs on them to guarantee code quality.
+
 
 ## Contributing
-
 To contribute to the CI pipeline or the project, please follow the GitFlow branching strategy:
 
 1. Create a feature branch from 'develop':
