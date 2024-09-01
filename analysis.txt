@@ -1,8 +1,14 @@
 Analysis of the problem:
 
-The main issue needing to be solved by Alpine inc. is the complany's dependance on only one developer, Pete. This reliance became significantly evident through Pete's leave, as it resulted in a missed release of an important feature. Manual deployement has also resulted in bugs being released into production, stressing the support and development teams and lowaring morale. All of which has had an overall impact on the revenue of Alpine Inc.
+The main issue needing to be solved by Alpine inc. is the complany's dependance on only one developer, Pete. 
+This reliance became significantly evident through Pete's leave, as it resulted in a missed release of an important feature.
+Manual deployement has also resulted in bugs being released into production, stressing the support and development teams and lowaring morale.
+All of which has had an overall impact on the revenue of Alpine Inc.
 
 Explanation and Justification:
 
-In order to solve this problem, automating the build and testing through a Continuous Integration (CI) pipeline run with GitHub Actions is suggested. The reason for this is that the pipeline ensures that the code is continuously merged and tested and removes the reliance on a single developer. When new code is released to a feature branch, the CI pipeline runs automatically which allows developers to find bugs and resolve them before they reach production. Additionally, because of this automation, the development and support teams can focus on more important tasks, which boosts morale and productivity.
+In order to solve this problem, automating the build and testing through a Continuous Integration (CI) pipeline run with GitHub Actions is suggested.
+The reason for this is that the pipeline ensures that the code is continuously merged and tested and removes the reliance on a single developer. 
+When new code is released to a feature branch, the CI pipeline runs automatically which allows developers to find bugs and resolve them before they reach production.
+Additionally, because of this automation, the development and support teams can focus on more important tasks, which boosts morale and productivity.
 
