@@ -47,7 +47,7 @@ module.exports = {
       statements: 80,
     },
   },
-  
+
   // A path to a custom dependency extractor
   // dependencyExtractor: undefined,
 
