@@ -45,9 +45,71 @@ jobs:
       with:
         name: test-report
         path: ./src/reports/report.xml
-  
-  deploy:
+
+  e2e-tests:
     needs: unit-tests
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+        env:
+          MONGO_INITDB_DATABASE: test
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: "18"
+    
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./src
+    
+    - name: Install Playwright Browsers
+      run: npx playwright install
+      working-directory: ./src
+
+    - name: Install missing libraries
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libwoff1 \
+          libvpx-dev \
+          libevent-2.1-7 \
+          libopus0 \
+          libgstreamer1.0-0 \
+          libgstreamer-plugins-base1.0-0 \
+          libgstreamer-gl1.0-0 \
+          libgstreamer-plugins-good1.0-0 \
+          libgstreamer-plugins-bad1.0-0 \
+          libharfbuzz-icu0 \
+          libhyphen0 \
+          libmanette-0.2-0 \
+          libflite1 \
+          libgles2-mesa-dev \
+          libx264-dev
+
+    - name: Start application
+      run: npm start &
+      working-directory: ./src
+    
+    - name: Wait for application to start
+      run: sleep 10
+
+    - name: Run e2e tests
+      run: npx playwright test
+      working-directory: ./src
+    
+    - name: Upload e2e test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: e2e-test-results
+        path: ./src/test-results
+
+  deploy:
+    needs: e2e-tests
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
@@ -57,4 +119,3 @@ jobs:
         with:
           personal_token: ${{ secrets.GH_PAT }}
           publish_dir: ./coverage
-
