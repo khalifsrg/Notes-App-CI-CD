@@ -65,6 +65,9 @@ jobs:
       - name: Install dependencies
         run: npm install
         working-directory: ./src
+      - name: Install Playwright Browsers
+        run: npx playwright install
+        working-directory: ./src
       - name: Run e2e tests
         run: npx playwright test
         working-directory: ./src
