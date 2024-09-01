@@ -86,7 +86,7 @@ jobs:
     
     # Add this step to start your application
     - name: Start application
-      run: npm run start
+      run: npm start &
       working-directory: ./src
     
     # Add a delay to allow the application to start fully (optional, but recommended)
