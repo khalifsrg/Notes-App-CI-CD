@@ -45,10 +45,17 @@ jobs:
       with:
         name: test-report
         path: ./src/reports/report.xml
-  
+
   e2e-tests:
     needs: unit-tests
     runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+        env:
+          MONGO_INITDB_DATABASE: test
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 18.x
@@ -58,12 +65,6 @@ jobs:
       - name: Install dependencies
         run: npm install
         working-directory: ./src
-      - name: Set up MongoDB
-        uses: docker://mongo:latest
-        with:
-          port: 27017
-        env:
-          MONGO_INITDB_DATABASE: test
       - name: Run e2e tests
         run: npx playwright test
         working-directory: ./src
