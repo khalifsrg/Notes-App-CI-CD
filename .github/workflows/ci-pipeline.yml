@@ -83,6 +83,24 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install
       working-directory: ./src
+
+    - name: Install missing libraries
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libwoff2-dev \
+          libvpx-dev \
+          libevent-dev \
+          libopus-dev \
+          libgstreamer1.0-dev \
+          libgstreamer-plugins-base1.0-dev \
+          libharfbuzz-dev \
+          libhyphen-dev \
+          libflite1 \
+          libgles2-mesa-dev \
+          libx264-dev \
+          libmanette-0.2-dev \
+          libflite-dev
     
     # Add this step to start your application
     - name: Start application
