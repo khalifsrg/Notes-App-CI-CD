@@ -84,7 +84,7 @@ jobs:
       run: npx playwright install
       working-directory: ./src
 
-    # Install missing libraries
+   # Install missing libraries
     - name: Install missing libraries
       run: |
         sudo apt-get update
@@ -104,6 +104,7 @@ jobs:
           libgstcodecparsers1.0-0 \
           libharfbuzz-icu0 \
           libmanette-0.2-0
+
 
 
 
