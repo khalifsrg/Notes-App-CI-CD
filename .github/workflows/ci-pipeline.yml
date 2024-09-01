@@ -46,8 +46,35 @@ jobs:
         name: test-report
         path: ./src/reports/report.xml
   
-  deploy:
+  e2e-tests:
     needs: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./src
+      - name: Set up MongoDB
+        uses: docker://mongo:latest
+        with:
+          port: 27017
+        env:
+          MONGO_INITDB_DATABASE: test
+      - name: Run e2e tests
+        run: npx playwright test
+        working-directory: ./src
+      - name: Upload e2e test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: e2e-test-results
+          path: ./src/test-results
+
+  deploy:
+    needs: e2e-tests
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
@@ -58,3 +85,4 @@ jobs:
           personal_token: ${{ secrets.GH_PAT }}
           publish_dir: ./coverage
 
+  

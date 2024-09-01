@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="1" errors="0" time="7.221">
+  <testsuite name="Add Note" errors="0" failures="1" skipped="0" timestamp="2024-09-01T03:51:51" time="6.822" tests="1">
+    <testcase classname="Add Note Should add a new note and redirect to login" name="Add Note Should add a new note and redirect to login" time="5.08">
+      <failure>Error: thrown: &quot;Exceeded timeout of 5000 ms for a test.
+Use jest.setTimeout(newTimeout) to increase the timeout value, if this is a long-running test.&quot;
+    at /home/ubuntu/s4014872-s3895242-assignment-1/src/tests/integration/note.test.js:9:5
+    at _dispatchDescribe (/home/ubuntu/s4014872-s3895242-assignment-1/src/node_modules/jest-circus/build/index.js:98:26)
+    at describe (/home/ubuntu/s4014872-s3895242-assignment-1/src/node_modules/jest-circus/build/index.js:60:5)
+    at Object.&lt;anonymous&gt; (/home/ubuntu/s4014872-s3895242-assignment-1/src/tests/integration/note.test.js:8:1)
+    at Runtime._execModule (/home/ubuntu/s4014872-s3895242-assignment-1/src/node_modules/jest-runtime/build/index.js:1646:24)
+    at Runtime._loadModule (/home/ubuntu/s4014872-s3895242-assignment-1/src/node_modules/jest-runtime/build/index.js:1185:12)
+    at Runtime.requireModule (/home/ubuntu/s4014872-s3895242-assignment-1/src/node_modules/jest-runtime/build/index.js:1009:12)
+    at jestAdapter (/home/ubuntu/s4014872-s3895242-assignment-1/src/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at runTestInternal (/home/ubuntu/s4014872-s3895242-assignment-1/src/node_modules/jest-runner/build/runTest.js:389:16)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
